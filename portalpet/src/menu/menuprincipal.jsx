@@ -1,11 +1,27 @@
-import React, { useState } from "react";
-import { 
-  Home, Dog, Heart, Search, User, Menu as MenuIcon, X, 
-  PawPrint, Eye, ArrowRight, MapPin, Cat, Rabbit,
-  Calendar, Scale, ArrowLeft
-} from "lucide-react";
-import "./menuprincipal.scss";
 
+import React, { useState } from "react";
+import {
+  Home,
+  Dog,
+  Heart,
+  Search,
+  User,
+  Info,
+  Menu as MenuIcon,
+  X,
+  PawPrint,
+  Eye,
+  ArrowRight,
+  MapPin,
+  Cat,
+  Rabbit,
+  Calendar,
+  Scale,
+  ArrowLeft
+} from "lucide-react";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "./menuprincipal.scss";
 
 const animaisDisponiveis = [
   {
@@ -68,31 +84,44 @@ const animaisDisponiveis = [
 
 function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
   const [menuAberto, setMenuAberto] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navegarPara = (item) => {
     setItemAtivo(item);
+
     if (item === "inicio") {
       setPetSelecionado(null);
+      navigate("/");
     }
+
     setMenuAberto(false);
   };
 
   return (
     <>
-      <button 
-        className="btn-hamburguer" 
+      <button
+        className="btn-hamburguer"
         onClick={() => setMenuAberto(!menuAberto)}
       >
         {menuAberto ? <X size={24} /> : <MenuIcon size={24} />}
       </button>
 
       {menuAberto && (
-        <div className="menu-overlay" onClick={() => setMenuAberto(false)} />
+        <div
+          className="menu-overlay"
+          onClick={() => setMenuAberto(false)}
+        />
       )}
 
       <aside className={`sidebar ${menuAberto ? "open" : ""}`}>
         <div className="header-container">
-          <img className="logo" src="/images/logo.png" alt="Logo PortalPet" />
+          <img
+            className="logo"
+            src="/images/logo.png"
+            alt="Logo PortalPet"
+          />
+
           <div className="texto-header">
             <h1 className="titulomenu">PortalPet</h1>
             <p className="subtitulomenu">Adoção & Cuidado</p>
@@ -100,50 +129,73 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
         </div>
 
         <nav className="menu-nav">
-          <a 
-            href="#inicio" 
-            className={`menu-item ${itemAtivo === "inicio" ? "active" : ""}`}
+          <Link
+            to="/"
+            className={`menu-item ${
+              location.pathname === "/" && itemAtivo === "inicio"
+                ? "active"
+                : ""
+            }`}
             onClick={() => navegarPara("inicio")}
           >
             <Home className="icon" size={20} />
             <span>Início</span>
-          </a>
+          </Link>
 
-          <a 
-            href="#meus-animais" 
-            className={`menu-item ${itemAtivo === "meus-animais" ? "active" : ""}`}
+          <a
+            href="#meus-animais"
+            className={`menu-item ${
+              itemAtivo === "meus-animais" ? "active" : ""
+            }`}
             onClick={() => navegarPara("meus-animais")}
           >
             <Dog className="icon" size={20} />
             <span>Meus Animais</span>
           </a>
 
-          <a 
-            href="#adocao" 
-            className={`menu-item ${itemAtivo === "adocao" ? "active" : ""}`}
+          <a
+            href="#adocao"
+            className={`menu-item ${
+              itemAtivo === "adocao" ? "active" : ""
+            }`}
             onClick={() => navegarPara("adocao")}
           >
             <Heart className="icon" size={20} />
             <span>Adoção</span>
           </a>
 
-          <a 
-            href="#desaparecidos" 
-            className={`menu-item ${itemAtivo === "desaparecidos" ? "active" : ""}`}
+          <a
+            href="#desaparecidos"
+            className={`menu-item ${
+              itemAtivo === "desaparecidos" ? "active" : ""
+            }`}
             onClick={() => navegarPara("desaparecidos")}
           >
             <Search className="icon" size={20} />
             <span>Desaparecidos</span>
           </a>
 
-          <a 
-            href="#meu-perfil" 
-            className={`menu-item ${itemAtivo === "meu-perfil" ? "active" : ""}`}
+          <a
+            href="#meu-perfil"
+            className={`menu-item ${
+              itemAtivo === "meu-perfil" ? "active" : ""
+            }`}
             onClick={() => navegarPara("meu-perfil")}
           >
             <User className="icon" size={20} />
             <span>Meu Perfil</span>
           </a>
+
+          <Link
+            to="/saiba-mais"
+            className={`menu-item ${
+              location.pathname === "/saiba-mais" ? "active" : ""
+            }`}
+            onClick={() => setMenuAberto(false)}
+          >
+            <Info className="icon" size={20} />
+            <span>Saiba Mais</span>
+          </Link>
         </nav>
       </aside>
     </>
@@ -156,42 +208,52 @@ export default function Inicio() {
 
   return (
     <div className="app-layout">
-      <Menu 
-        itemAtivo={itemAtivo} 
-        setItemAtivo={setItemAtivo} 
+      <Menu
+        itemAtivo={itemAtivo}
+        setItemAtivo={setItemAtivo}
         setPetSelecionado={setPetSelecionado}
       />
 
       <main className="main-content">
-   
         {petSelecionado ? (
           <div className="pet-details-container">
-           
             <div className="breadcrumb">
-              <span onClick={() => { setPetSelecionado(null); setItemAtivo("meus-animais"); }}>
+              <span
+                onClick={() => {
+                  setPetSelecionado(null);
+                  setItemAtivo("meus-animais");
+                }}
+              >
                 Meus Animais
               </span>
+
               <span className="separator">&gt;</span>
               <span className="current">{petSelecionado.nome}</span>
             </div>
 
             <div className="pet-details-grid">
-           
               <div className="pet-details-image-wrapper">
-                <img src={petSelecionado.imagem} alt={petSelecionado.nome} />
+                <img
+                  src={petSelecionado.imagem}
+                  alt={petSelecionado.nome}
+                />
+
                 <button className="btn-favorito-large">
-                  <Heart size={20} fill={petSelecionado.favorito ? "#f17c3e" : "none"} />
+                  <Heart
+                    size={20}
+                    fill={petSelecionado.favorito ? "#f17c3e" : "none"}
+                  />
                 </button>
               </div>
 
-              
               <div className="pet-details-info">
                 <div className="title-row">
                   <h1>{petSelecionado.nome}</h1>
-                  <span className="badge-adocao-tag">Disponível para adoção</span>
+                  <span className="badge-adocao-tag">
+                    Disponível para adoção
+                  </span>
                 </div>
 
-               
                 <div className="attributes-grid">
                   <div className="attr-card">
                     <Calendar className="attr-icon" size={22} />
@@ -242,15 +304,14 @@ export default function Inicio() {
                   </div>
                 </div>
 
-            
                 <div className="description-section">
                   <h3>DESCRIÇÃO</h3>
                   <p>{petSelecionado.descricao}</p>
                 </div>
 
                 <div className="details-actions">
-                  <button 
-                    className="btn-voltar" 
+                  <button
+                    className="btn-voltar"
                     onClick={() => {
                       setPetSelecionado(null);
                       setItemAtivo("inicio");
@@ -269,9 +330,7 @@ export default function Inicio() {
             </div>
           </div>
         ) : (
-          
           <>
-            
             <section className="hero-card">
               <div className="hero-content">
                 <div className="badge-tag">
@@ -284,7 +343,8 @@ export default function Inicio() {
                 </h1>
 
                 <p className="hero-description">
-                  Ajude um animal a encontrar um lar cheio de carinho ou encontre seu próximo companheiro.
+                  Ajude um animal a encontrar um lar cheio de carinho ou
+                  encontre seu próximo companheiro.
                 </p>
 
                 <div className="hero-buttons">
@@ -301,16 +361,17 @@ export default function Inicio() {
               </div>
 
               <div className="hero-image-wrapper">
-                <img 
-                  src="/images/cachorroegato.avif" 
-                  alt="Cão e gato juntos" 
-                  className="hero-image" 
+                <img
+                  src="/images/cachorroegato.avif"
+                  alt="Cão e gato juntos"
+                  className="hero-image"
                 />
 
                 <div className="floating-badge">
                   <div className="heart-icon-wrapper">
                     <Heart size={20} className="heart-icon" />
                   </div>
+
                   <div className="badge-text">
                     <strong>+200 animais</strong>
                     <span>encontraram um lar</span>
@@ -319,13 +380,15 @@ export default function Inicio() {
               </div>
             </section>
 
-          
             <section className="pets-section">
               <div className="pets-header">
                 <div>
                   <h2>Animais esperando por um lar</h2>
-                  <p>Conheça alguns dos animais disponíveis para adoção</p>
+                  <p>
+                    Conheça alguns dos animais disponíveis para adoção
+                  </p>
                 </div>
+
                 <a href="#adocao" className="ver-todos">
                   <span>Ver todos</span>
                   <ArrowRight size={18} />
@@ -337,9 +400,19 @@ export default function Inicio() {
                   <div key={pet.id} className="pet-card">
                     <div className="pet-image-container">
                       <img src={pet.imagem} alt={pet.nome} />
-                      <span className="badge-adocao">Disponível para adoção</span>
-                      <button className={`btn-favorito ${pet.favorito ? "active" : ""}`}>
-                        <Heart size={16} fill={pet.favorito ? "#f17c3e" : "none"} />
+                      <span className="badge-adocao">
+                        Disponível para adoção
+                      </span>
+
+                      <button
+                        className={`btn-favorito ${
+                          pet.favorito ? "active" : ""
+                        }`}
+                      >
+                        <Heart
+                          size={16}
+                          fill={pet.favorito ? "#f17c3e" : "none"}
+                        />
                       </button>
                     </div>
 
@@ -361,8 +434,7 @@ export default function Inicio() {
                         <span>{pet.cidade}</span>
                       </div>
 
-                     
-                      <button 
+                      <button
                         className="btn-detalhes"
                         onClick={() => {
                           setPetSelecionado(pet);
@@ -378,7 +450,6 @@ export default function Inicio() {
               </div>
             </section>
 
-            
             <section className="cta-banner">
               <div className="cta-icons">
                 <Dog size={28} />
@@ -391,7 +462,8 @@ export default function Inicio() {
               </h2>
 
               <p className="cta-description">
-                Junte-se a centenas de pessoas que já encontraram um novo amigo através do PortalPet.
+                Junte-se a centenas de pessoas que já encontraram um novo
+                amigo através do PortalPet.
               </p>
 
               <div className="cta-buttons">
@@ -412,3 +484,5 @@ export default function Inicio() {
     </div>
   );
 }
+
+export { Menu };

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import SaibaMais from "./saibamais/saibamais";
 
 import Router from "./router";
 

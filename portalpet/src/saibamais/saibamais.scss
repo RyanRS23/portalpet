@@ -1,0 +1,476 @@
+
+.saiba-mais-page {
+  --pet-dark: #1a2a32;
+  --pet-orange: #f17c3e;
+  --pet-coral: #f26849;
+  --pet-cream: #f2efeb;
+  --pet-peach: #edc4a1;
+
+  min-height: 100vh;
+  padding: 0 0 18px;
+  background: #222321;
+  color: var(--pet-dark);
+  overflow: hidden;
+
+  .saiba-hero {
+    position: relative;
+    min-height: 490px;
+    padding: 32px 30px 28px;
+    background:
+      radial-gradient(
+        circle at 12% 75%,
+        rgba(255, 255, 255, 0.14) 0 2px,
+        transparent 3px
+      ),
+      linear-gradient(135deg, #f4d4b6, #e8b58e);
+    overflow: hidden;
+  }
+
+  .saiba-hero-copy {
+    position: relative;
+    z-index: 2;
+    width: 56%;
+  }
+
+  .saiba-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+    color: #594235;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+  }
+
+  .saiba-hero-copy h1 {
+    font-size: clamp(30px, 4vw, 54px);
+    line-height: 0.98;
+    font-weight: 950;
+    letter-spacing: -1.8px;
+    color: var(--pet-dark);
+
+    span {
+      color: var(--pet-coral);
+    }
+  }
+
+  .saiba-hero-copy h2 {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 850;
+  }
+
+  .saiba-hero-copy > p {
+    max-width: 300px;
+    margin-top: 5px;
+    color: #4c4943;
+    font-size: 12px;
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  .saiba-hero-image {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    width: 49%;
+    height: 210px;
+    pointer-events: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      mix-blend-mode: multiply;
+      mask-image: linear-gradient(
+        to bottom,
+        #000 65%,
+        transparent 100%
+      );
+    }
+  }
+
+  .saiba-paw {
+    position: absolute;
+    color: var(--pet-orange);
+    opacity: 0.9;
+
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .paw-a {
+    right: 20%;
+    top: 50px;
+    transform: rotate(25deg);
+  }
+
+  .paw-b {
+    right: 2%;
+    bottom: 15px;
+    transform: rotate(-20deg);
+  }
+
+  .saiba-patinha {
+    position: absolute;
+    color: var(--pet-orange);
+    opacity: 0.8;
+
+    svg {
+      width: 27px;
+      height: 27px;
+    }
+  }
+
+  .saiba-patinha-1 {
+    left: 18px;
+    bottom: -48px;
+    transform: rotate(-20deg);
+  }
+
+  .saiba-steps {
+    position: relative;
+    z-index: 3;
+    width: 76%;
+    max-width: 640px;
+    margin: 26px auto 0;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
+    border-radius: 24px;
+    background: var(--pet-dark);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(38, 36, 31, 0.12);
+  }
+
+  .saiba-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+
+    h3 {
+      margin-bottom: 5px;
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    p {
+      color: #d3dadd;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+  }
+
+  .saiba-step-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    color: #fff;
+
+    span {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--pet-orange);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+    }
+  }
+
+  .saiba-step-footer {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #ffd0ad;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .saiba-dogs {
+    position: relative;
+    min-height: 210px;
+    padding: 28px 16px 18px;
+    background: #1d2d33;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -42px;
+      left: -5%;
+      width: 110%;
+      height: 90px;
+      border-radius: 50%;
+      background: #f4d4b6;
+    }
+  }
+
+  .saiba-dogs-heading {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 18px;
+
+    span {
+      color: #f6a05f;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      margin-top: 5px;
+      color: #fff;
+      font-size: clamp(17px, 2.4vw, 25px);
+      font-weight: 850;
+    }
+  }
+
+  .saiba-dogs-row {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: end;
+    gap: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .saiba-dog {
+    height: clamp(100px, 16vw, 180px);
+    overflow: hidden;
+    border-radius: 48% 48% 10px 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.06);
+    }
+  }
+
+  .saiba-patinha-2 {
+    right: 10px;
+    bottom: 12px;
+  }
+
+  .saiba-cta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 900px;
+    min-height: 85px;
+    margin: -2px auto 0;
+    padding: 18px 24px;
+    border-radius: 22px;
+    background: #f8e4d0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .saiba-cta-icon {
+    flex-shrink: 0;
+    color: var(--pet-orange);
+  }
+
+  .saiba-cta-text {
+    flex: 1;
+
+    h2 {
+      font-size: clamp(14px, 2vw, 20px);
+      line-height: 1.3;
+      font-weight: 900;
+      color: var(--pet-dark);
+
+      span {
+        color: var(--pet-coral);
+      }
+    }
+
+    p {
+      margin-top: 5px;
+      color: #665b50;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+  }
+
+  .saiba-cta-arrow {
+    flex-shrink: 0;
+    color: var(--pet-orange);
+  }
+
+  .saiba-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 10px 4px;
+    color: #e9c7a8;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    svg {
+      color: #f17c3e;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .saiba-mais-page {
+    .saiba-hero {
+      padding-left: 45px;
+      padding-right: 45px;
+    }
+
+    .saiba-steps {
+      margin-top: 36px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .saiba-mais-page {
+    .saiba-hero {
+      padding: 28px 20px;
+    }
+
+    .saiba-hero-copy {
+      width: 68%;
+    }
+
+    .saiba-hero-image {
+      width: 46%;
+      height: 185px;
+    }
+
+    .saiba-steps {
+      width: 94%;
+      padding: 18px;
+      gap: 18px 12px;
+    }
+
+    .saiba-cta {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .saiba-mais-page {
+    .saiba-hero {
+      padding: 26px 16px 22px;
+    }
+
+    .saiba-hero-copy {
+      width: 100%;
+      padding-bottom: 135px;
+    }
+
+    .saiba-hero-copy h1 {
+      font-size: clamp(32px, 9vw, 44px);
+    }
+
+    .saiba-hero-image {
+      top: 115px;
+      right: 0;
+      width: 72%;
+      height: 150px;
+    }
+
+    .saiba-steps {
+      width: 100%;
+      margin-top: 8px;
+      padding: 17px 14px;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      border-radius: 18px;
+    }
+
+    .saiba-step h3 {
+      font-size: 12px;
+    }
+
+    .saiba-step p {
+      font-size: 11px;
+    }
+
+    .saiba-dogs {
+      padding: 28px 10px 20px;
+    }
+
+    .saiba-dogs-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .saiba-dog {
+      height: 115px;
+
+      &:nth-child(n + 4) {
+        display: none;
+      }
+    }
+
+    .saiba-cta {
+      gap: 10px;
+      padding: 15px;
+      border-radius: 16px;
+    }
+
+    .saiba-cta-icon svg {
+      width: 22px;
+    }
+
+    .saiba-cta-text h2 {
+      font-size: 14px;
+    }
+
+    .saiba-cta-text p {
+      font-size: 10px;
+    }
+
+    .saiba-cta-arrow svg {
+      width: 19px;
+    }
+
+    .saiba-footer {
+      gap: 7px;
+      font-size: 8px;
+      letter-spacing: 1px;
+    }
+  }
+}
