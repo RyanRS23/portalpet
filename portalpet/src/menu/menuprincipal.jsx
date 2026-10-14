@@ -17,7 +17,7 @@ import {
   Rabbit,
   Calendar,
   Scale,
-  ArrowLeft
+  ArrowLeft,
 } from "lucide-react";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -34,9 +34,11 @@ const animaisDisponiveis = [
     peso: "32 kg",
     cidade: "São Paulo",
     responsavel: "Carlos Mendes",
-    descricao: "Thor é um cachorro muito brincalhão e cheio de energia. Adora correr em parques e brincar com bolinhas. É muito carinhoso com crianças e se dá bem com outros animais. Vacinado e castrado.",
-    imagem: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80",
-    favorito: false
+    descricao:
+      "Thor é um cachorro muito brincalhão e cheio de energia. Adora correr em parques e brincar com bolinhas. É muito carinhoso com crianças e se dá bem com outros animais. Vacinado e castrado.",
+    imagem:
+      "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80",
+    favorito: false,
   },
   {
     id: 2,
@@ -48,9 +50,11 @@ const animaisDisponiveis = [
     peso: "14 kg",
     cidade: "Campinas",
     responsavel: "Ana Paula",
-    descricao: "Luna é super dócil, tranquila e ama fazer companhia. Já está adestrada e convive super bem em apartamentos.",
-    imagem: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80",
-    favorito: true
+    descricao:
+      "Luna é super dócil, tranquila e ama fazer companhia. Já está adestrada e convive super bem em apartamentos.",
+    imagem:
+      "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80",
+    favorito: true,
   },
   {
     id: 3,
@@ -62,9 +66,11 @@ const animaisDisponiveis = [
     peso: "11 kg",
     cidade: "Rio de Janeiro",
     responsavel: "Mariana Silva",
-    descricao: "Bob é curioso, esperto e adorável. Precisa de uma família que goste de fazer passeios ao ar livre.",
-    imagem: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=800&q=80",
-    favorito: true
+    descricao:
+      "Bob é curioso, esperto e adorável. Precisa de uma família que goste de fazer passeios ao ar livre.",
+    imagem:
+      "https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=800&q=80",
+    favorito: true,
   },
   {
     id: 4,
@@ -76,10 +82,12 @@ const animaisDisponiveis = [
     peso: "4 kg",
     cidade: "Campinas",
     responsavel: "Lucas Rocha",
-    descricao: "Mia é uma gatinha calma, limpa e carinhosa. Adora um cantinho ensolarado para tirar um cochilo.",
-    imagem: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
-    favorito: false
-  }
+    descricao:
+      "Mia é uma gatinha calma, limpa e carinhosa. Adora um cantinho ensolarado para tirar um cochilo.",
+    imagem:
+      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80",
+    favorito: false,
+  },
 ];
 
 function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
@@ -103,6 +111,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
       <button
         className="btn-hamburguer"
         onClick={() => setMenuAberto(!menuAberto)}
+        aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
       >
         {menuAberto ? <X size={24} /> : <MenuIcon size={24} />}
       </button>
@@ -129,6 +138,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
         </div>
 
         <nav className="menu-nav">
+          {/* INÍCIO */}
           <Link
             to="/"
             className={`menu-item ${
@@ -142,17 +152,26 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
             <span>Início</span>
           </Link>
 
-          <a
-            href="#meus-animais"
+          {/* MEUS ANIMAIS */}
+          <Link
+            to="/meus-animais"
             className={`menu-item ${
-              itemAtivo === "meus-animais" ? "active" : ""
+              itemAtivo === "meus-animais" ||
+              location.pathname === "/meus-animais"
+                ? "active"
+                : ""
             }`}
-            onClick={() => navegarPara("meus-animais")}
+            onClick={() => {
+              setItemAtivo("meus-animais");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <Dog className="icon" size={20} />
             <span>Meus Animais</span>
-          </a>
+          </Link>
 
+          {/* ADOÇÃO */}
           <a
             href="#adocao"
             className={`menu-item ${
@@ -164,6 +183,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
             <span>Adoção</span>
           </a>
 
+          {/* DESAPARECIDOS */}
           <a
             href="#desaparecidos"
             className={`menu-item ${
@@ -175,6 +195,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
             <span>Desaparecidos</span>
           </a>
 
+          {/* MEU PERFIL */}
           <a
             href="#meu-perfil"
             className={`menu-item ${
@@ -186,6 +207,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
             <span>Meu Perfil</span>
           </a>
 
+          {/* SAIBA MAIS */}
           <Link
             to="/saiba-mais"
             className={`menu-item ${
@@ -221,10 +243,10 @@ export default function Inicio() {
               <span
                 onClick={() => {
                   setPetSelecionado(null);
-                  setItemAtivo("meus-animais");
+                  setItemAtivo("inicio");
                 }}
               >
-                Meus Animais
+                Início
               </span>
 
               <span className="separator">&gt;</span>
@@ -339,7 +361,9 @@ export default function Inicio() {
                 </div>
 
                 <h1 className="hero-title">
-                  Encontre um <br /> novo melhor <br /> amigo.
+                  Encontre um <br />
+                  novo melhor <br />
+                  amigo.
                 </h1>
 
                 <p className="hero-description">
@@ -400,6 +424,7 @@ export default function Inicio() {
                   <div key={pet.id} className="pet-card">
                     <div className="pet-image-container">
                       <img src={pet.imagem} alt={pet.nome} />
+
                       <span className="badge-adocao">
                         Disponível para adoção
                       </span>
@@ -438,7 +463,7 @@ export default function Inicio() {
                         className="btn-detalhes"
                         onClick={() => {
                           setPetSelecionado(pet);
-                          setItemAtivo("meus-animais");
+                          setItemAtivo("inicio");
                         }}
                       >
                         <Eye size={16} />
