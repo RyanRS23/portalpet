@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   Home,
@@ -95,15 +94,11 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const navegarPara = (item) => {
+  const navegarPara = (item, rota) => {
     setItemAtivo(item);
-
-    if (item === "inicio") {
-      setPetSelecionado(null);
-      navigate("/");
-    }
-
+    setPetSelecionado(null);
     setMenuAberto(false);
+    navigate(rota);
   };
 
   return (
@@ -138,28 +133,25 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
         </div>
 
         <nav className="menu-nav">
-          {/* INÍCIO */}
           <Link
             to="/"
             className={`menu-item ${
-              location.pathname === "/" && itemAtivo === "inicio"
-                ? "active"
-                : ""
+              location.pathname === "/" ? "active" : ""
             }`}
-            onClick={() => navegarPara("inicio")}
+            onClick={() => {
+              setItemAtivo("inicio");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <Home className="icon" size={20} />
             <span>Início</span>
           </Link>
 
-          {/* MEUS ANIMAIS */}
           <Link
             to="/meus-animais"
             className={`menu-item ${
-              itemAtivo === "meus-animais" ||
-              location.pathname === "/meus-animais"
-                ? "active"
-                : ""
+              location.pathname === "/meus-animais" ? "active" : ""
             }`}
             onClick={() => {
               setItemAtivo("meus-animais");
@@ -171,49 +163,61 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
             <span>Meus Animais</span>
           </Link>
 
-          {/* ADOÇÃO */}
-          <a
-            href="#adocao"
+          <Link
+            to="/adocao"
             className={`menu-item ${
-              itemAtivo === "adocao" ? "active" : ""
+              location.pathname === "/adocao" ? "active" : ""
             }`}
-            onClick={() => navegarPara("adocao")}
+            onClick={() => {
+              setItemAtivo("adocao");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <Heart className="icon" size={20} />
             <span>Adoção</span>
-          </a>
+          </Link>
 
-          {/* DESAPARECIDOS */}
-          <a
-            href="#desaparecidos"
+          <Link
+            to="/desaparecidos"
             className={`menu-item ${
-              itemAtivo === "desaparecidos" ? "active" : ""
+              location.pathname === "/desaparecidos" ? "active" : ""
             }`}
-            onClick={() => navegarPara("desaparecidos")}
+            onClick={() => {
+              setItemAtivo("desaparecidos");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <Search className="icon" size={20} />
             <span>Desaparecidos</span>
-          </a>
+          </Link>
 
-          {/* MEU PERFIL */}
-          <a
-            href="#meu-perfil"
+          <Link
+            to="/meu-perfil"
             className={`menu-item ${
-              itemAtivo === "meu-perfil" ? "active" : ""
+              location.pathname === "/meu-perfil" ? "active" : ""
             }`}
-            onClick={() => navegarPara("meu-perfil")}
+            onClick={() => {
+              setItemAtivo("meu-perfil");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <User className="icon" size={20} />
             <span>Meu Perfil</span>
-          </a>
+          </Link>
 
-          {/* SAIBA MAIS */}
           <Link
             to="/saiba-mais"
             className={`menu-item ${
               location.pathname === "/saiba-mais" ? "active" : ""
             }`}
-            onClick={() => setMenuAberto(false)}
+            onClick={() => {
+              setItemAtivo("saiba-mais");
+              setPetSelecionado(null);
+              setMenuAberto(false);
+            }}
           >
             <Info className="icon" size={20} />
             <span>Saiba Mais</span>
@@ -227,6 +231,7 @@ function Menu({ itemAtivo, setItemAtivo, setPetSelecionado }) {
 export default function Inicio() {
   const [petSelecionado, setPetSelecionado] = useState(null);
   const [itemAtivo, setItemAtivo] = useState("inicio");
+  const navigate = useNavigate();
 
   return (
     <div className="app-layout">
@@ -240,14 +245,15 @@ export default function Inicio() {
         {petSelecionado ? (
           <div className="pet-details-container">
             <div className="breadcrumb">
-              <span
+              <button
+                type="button"
                 onClick={() => {
                   setPetSelecionado(null);
                   setItemAtivo("inicio");
                 }}
               >
                 Início
-              </span>
+              </button>
 
               <span className="separator">&gt;</span>
               <span className="current">{petSelecionado.nome}</span>
@@ -260,7 +266,11 @@ export default function Inicio() {
                   alt={petSelecionado.nome}
                 />
 
-                <button className="btn-favorito-large">
+                <button
+                  className="btn-favorito-large"
+                  type="button"
+                  aria-label="Favoritar animal"
+                >
                   <Heart
                     size={20}
                     fill={petSelecionado.favorito ? "#f17c3e" : "none"}
@@ -334,6 +344,7 @@ export default function Inicio() {
                 <div className="details-actions">
                   <button
                     className="btn-voltar"
+                    type="button"
                     onClick={() => {
                       setPetSelecionado(null);
                       setItemAtivo("inicio");
@@ -343,7 +354,11 @@ export default function Inicio() {
                     <span>Voltar</span>
                   </button>
 
-                  <button className="btn-interesse">
+                  <button
+                    className="btn-interesse"
+                    type="button"
+                    onClick={() => navigate("/adocao")}
+                  >
                     <Heart size={18} />
                     <span>Tenho interesse em adotar</span>
                   </button>
@@ -372,12 +387,20 @@ export default function Inicio() {
                 </p>
 
                 <div className="hero-buttons">
-                  <button className="btn-primary">
+                  <button
+                    className="btn-primary"
+                    type="button"
+                    onClick={() => navigate("/adocao")}
+                  >
                     <Heart size={18} />
                     <span>Quero Adotar</span>
                   </button>
 
-                  <button className="btn-secondary">
+                  <button
+                    className="btn-secondary"
+                    type="button"
+                    onClick={() => navigate("/meus-animais")}
+                  >
                     <PawPrint size={18} />
                     <span>Quero colocar para adoção</span>
                   </button>
@@ -413,10 +436,14 @@ export default function Inicio() {
                   </p>
                 </div>
 
-                <a href="#adocao" className="ver-todos">
+                <button
+                  type="button"
+                  className="ver-todos"
+                  onClick={() => navigate("/adocao")}
+                >
                   <span>Ver todos</span>
                   <ArrowRight size={18} />
-                </a>
+                </button>
               </div>
 
               <div className="pets-grid">
@@ -433,6 +460,8 @@ export default function Inicio() {
                         className={`btn-favorito ${
                           pet.favorito ? "active" : ""
                         }`}
+                        type="button"
+                        aria-label={`Favoritar ${pet.nome}`}
                       >
                         <Heart
                           size={16}
@@ -461,6 +490,7 @@ export default function Inicio() {
 
                       <button
                         className="btn-detalhes"
+                        type="button"
                         onClick={() => {
                           setPetSelecionado(pet);
                           setItemAtivo("inicio");
@@ -492,15 +522,23 @@ export default function Inicio() {
               </p>
 
               <div className="cta-buttons">
-                <a href="#adocao" className="btn-cta-white">
+                <button
+                  type="button"
+                  className="btn-cta-white"
+                  onClick={() => navigate("/adocao")}
+                >
                   <Heart size={18} />
                   <span>Ver animais para adoção</span>
-                </a>
+                </button>
 
-                <a href="#cadastrar" className="btn-cta-outline">
+                <button
+                  type="button"
+                  className="btn-cta-outline"
+                  onClick={() => navigate("/meus-animais")}
+                >
                   <PawPrint size={18} />
                   <span>Cadastrar um animal</span>
-                </a>
+                </button>
               </div>
             </section>
           </>
