@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap');
+
+// VARIÁVEIS
+$azul: #283740;
+$creme: #F2EFEB;
+$laranja: #F29C50;
+$laranja2: #F28444;
+$coral: #F26849;
+$texto-suave: #5d6a72;
+$raio: 16px;
+$sombra: 0 4px 14px #28374020;
+
+// BREAKPOINTS
+@mixin a-partir-de($largura) {
+  @media (min-width: $largura) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', Arial, sans-serif;
+  line-height: 1.5;
+  background: $creme;
+  color: $azul;
+}
+
+h1, h2, h3 {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.container {
+  width: calc(100% - 32px);
+  max-width: 1040px;
+  margin: auto;
+}
+
+// TOPO
+.topo {
+  padding: 10px 0;
+  background: $azul;
+  border-bottom: 4px solid $coral;
+
+  .logo {
+    height: 46px;
+    width: auto;
+  }
+}
+
+// CONTEÚDO
+.filho {
+  min-height: 100vh;
+  padding: 32px 0 56px;
+  background: linear-gradient(155deg, $creme, #f0d1b6 55%, #efb17f);
+}
+
+.cabecalho {
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    color: $texto-suave;
+  }
+}
+
+// BUSCA
+.busca {
+  margin-bottom: 32px;
+  padding: 20px;
+  border-radius: $raio;
+  background: linear-gradient(160deg, $azul 47%, $laranja2 47%);
+  box-shadow: $sombra;
+
+  .campos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    input,
+    select {
+      width: 100%;
+      height: 44px;
+      padding: 0 16px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      background: $creme;
+      color: $azul;
+      font: inherit;
+    }
+
+    button {
+      height: 44px;
+      padding: 0 28px;
+      border: none;
+      border-radius: 999px;
+      background: $azul;
+      color: $creme;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        background: $coral;
+      }
+    }
+
+    @include a-partir-de(700px) {
+      grid-template-columns: 2fr 1.4fr 1.4fr 1fr auto;
+    }
+  }
+}
+
+// CARDS
+.animais {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include a-partir-de(700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include a-partir-de(1000px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  overflow: hidden;
+  border-radius: $raio;
+  background: $creme;
+  box-shadow: $sombra;
+
+  &:hover {
+    box-shadow: 0 8px 20px #28374030;
+  }
+
+  .moldura {
+    position: relative;
+  }
+
+  .foto {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .selo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: $coral;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .info {
+    padding: 16px 18px 18px;
+    border-top: 3px solid $laranja;
+  }
+
+  .titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    span {
+      color: $texto-suave;
+      font-size: 14px;
+    }
+  }
+
+  .porte {
+    margin-bottom: 14px;
+    color: $texto-suave;
+    font-size: 14px;
+  }
+
+  .detalhes {
+    display: block;
+    padding: 9px;
+    border-radius: 999px;
+    background: $coral;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      background: $laranja2;
+    }
+  }
+}
+
+// RODAPÉ
+.rodape-acoes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 36px;
+
+  @include a-partir-de(700px) {
+    grid-template-columns: 1fr auto;
+  }
+
+  .dicas {
+    padding: 16px 20px;
+    border-left: 5px solid $laranja;
+    border-radius: 0 $raio $raio 0;
+    background: $azul;
+    color: $creme;
+
+    h3 {
+      margin-bottom: 4px;
+      color: $laranja;
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .adicionar {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: $coral;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: $sombra;
+
+      &:hover {
+        background: $laranja2;
+      }
+    }
+  }
+}
