@@ -4,13 +4,14 @@ import Adocao from "./adocao/adocao";
 import MeuPerfil from "./meuperfil/meuperfil";
 import MeusAnimais from "./Meus_animais/meusanimais";
 import SaibaMais from "./saibamais/saibamais";
-
+import Desaparecidos from "./Desaparecidos/Desaparecidos";
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/adocao" element={<Adocao />} />
+        <Route path="/desaparecidos" element={<Desaparecidos />} />
         <Route path="/meu-perfil" element={<MeuPerfil />} />
         <Route path="/meus-animais" element={<MeusAnimais />} />
         <Route path="/saiba-mais" element={<SaibaMais />} />
