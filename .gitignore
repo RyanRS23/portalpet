@@ -1,1 +1,12 @@
-/node_modules
+# Dependências (sem a barra na frente para ignorar em qualquer subpasta)
+node_modules/
+
+# Arquivos de ambiente e chaves sensíveis
+.env
+.env.local
+.env.*.local
+
+# Builds de produção e cache
+build/
+dist/
+.npm
