@@ -1,68 +1,70 @@
 .desaparecidos-layout {
   min-height: 100vh;
-  background: #242629;
+  background: #e5e8ec;
 }
 
 .desaparecidos-page {
   box-sizing: border-box;
   min-width: 0;
-  padding: 20px;
-  background: #242629;
-  color: #292929;
+  padding: 24px 32px;
+  background: #e5e8ec;
+  color: #16232a;
 }
 
 .desaparecidos-conteudo {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
 }
 
 .desaparecidos-filtros {
   position: relative;
-  overflow: hidden;
   box-sizing: border-box;
-  padding: 18px 20px;
-  border-radius: 5px;
-  background: linear-gradient(110deg, #ff8b24 0%, #ffb97a 42%, #fff4e8 100%);
+  padding: 24px 28px;
+  border-radius: 16px;
+  background: #f8f7f4;
+  box-shadow: 0 4px 20px rgba(22, 35, 42, 0.05);
+  border: 1px solid rgba(22, 35, 42, 0.06);
 }
 
 .desaparecidos-filtros-topo {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .desaparecidos-cabecalho h1 {
   margin: 0;
-  color: #111;
-  font-size: clamp(22px, 3vw, 38px);
+  color: #16232a;
+  font-size: clamp(22px, 2.6vw, 32px);
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .desaparecidos-cabecalho p {
-  margin: 8px 0 0;
-  color: #292929;
-  font-size: 12px;
-  font-weight: 700;
+  margin: 6px 0 0;
+  color: #64707a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.desaparecidos-campos {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  align-items: center;
 }
 
 .desaparecidos-busca {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 40%;
-  min-width: 180px;
   box-sizing: border-box;
-  padding: 9px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 7px;
-  background: #292d30;
-  color: #f8f8f8;
+  padding: 0 12px;
+  height: 42px;
+  border: 1px solid #d2d8dc;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #16232a;
 }
 
 .desaparecidos-busca input {
@@ -72,26 +74,18 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: #fff;
+  color: #16232a;
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .desaparecidos-busca input::placeholder {
-  color: #d1d1d1;
+  color: #8c98a0;
 }
 
 .desaparecidos-busca svg {
   flex-shrink: 0;
-}
-
-.desaparecidos-campos {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
-  max-width: 65%;
+  color: #64707a;
 }
 
 .desaparecidos-campos label {
@@ -103,19 +97,19 @@
 .desaparecidos-campos select {
   box-sizing: border-box;
   width: 100%;
-  height: 34px;
-  padding: 0 10px;
-  border: 1px solid rgba(0, 0, 0, 0.13);
-  border-radius: 6px;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #d2d8dc;
+  border-radius: 8px;
   outline: none;
-  background: #292d30;
-  color: #f5f5f5;
+  background: #ffffff;
+  color: #16232a;
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .desaparecidos-campos input::placeholder {
-  color: #d4d4d4;
+  color: #8c98a0;
 }
 
 .desaparecidos-campos select {
@@ -123,9 +117,10 @@
 }
 
 .desaparecidos-campos input:focus,
-.desaparecidos-campos select:focus {
-  border-color: #fff;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+.desaparecidos-campos select:focus,
+.desaparecidos-busca:focus-within {
+  border-color: #ef7d3b;
+  box-shadow: 0 0 0 3px rgba(239, 125, 59, 0.15);
 }
 
 .desaparecidos-sr-only {
@@ -138,40 +133,42 @@
 }
 
 .desaparecidos-acoes-filtro {
-  position: relative;
-  z-index: 1;
   display: flex;
-  gap: 8px;
-  margin-top: 11px;
+  height: 42px;
 }
 
 .desaparecidos-acoes-filtro button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  min-height: 30px;
-  padding: 5px 12px;
+  gap: 7px;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
   border: 0;
-  border-radius: 5px;
-  background: #171717;
+  border-radius: 8px;
+  background: #ef7d3b;
   color: #fff;
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-}
+  box-shadow: 0 4px 12px rgba(239, 125, 59, 0.3);
+  transition: background 0.2s ease, transform 0.1s ease;
 
-.desaparecidos-acoes-filtro button:hover {
-  background: #414141;
+  &:hover {
+    background: #e06d2b;
+  }
 }
 
 .desaparecidos-listagem {
   box-sizing: border-box;
-  margin-top: 20px;
-  padding: 18px;
-  border-radius: 5px;
-  background: #dedede;
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #f8f7f4;
+  border: 1px solid rgba(22, 35, 42, 0.06);
+  box-shadow: 0 4px 20px rgba(22, 35, 42, 0.05);
 }
 
 .desaparecidos-listagem-titulo {
@@ -179,15 +176,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .desaparecidos-listagem-titulo > div {
   display: flex;
   align-items: center;
-  gap: 7px;
-  color: #303030;
-  font-size: 14px;
+  gap: 8px;
+  color: #16232a;
+  font-size: 16px;
   font-weight: 800;
 }
 
@@ -197,26 +194,33 @@
 }
 
 .desaparecidos-listagem-titulo svg {
-  color: #e87538;
+  color: #ef7d3b;
 }
 
 .desaparecidos-listagem-titulo > span {
-  color: #777;
-  font-size: 11px;
+  color: #64707a;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .desaparecidos-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
-  gap: 24px 18px;
+  gap: 22px;
 }
 
 .desaparecidos-card {
   overflow: hidden;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(22, 35, 42, 0.06);
+  border: 1px solid rgba(22, 35, 42, 0.04);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 }
 
 .desaparecidos-moldura {
@@ -226,25 +230,26 @@
 .desaparecidos-foto {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
 }
 
 .desaparecidos-selo {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 4px 9px;
-  border-radius: 4px;
-  background: #e87538;
+  top: 12px;
+  left: 12px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #ef7d3b;
   color: #fff;
   font-size: 11px;
   font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .desaparecidos-info {
-  padding: 13px 14px 15px;
-  border-top: 3px solid #ff8b24;
+  padding: 16px;
+  border-top: 3px solid #ef7d3b;
 }
 
 .desaparecidos-titulo-card {
@@ -256,74 +261,70 @@
 
 .desaparecidos-titulo-card h2 {
   margin: 0;
-  color: #202020;
-  font-size: 19px;
+  color: #16232a;
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .desaparecidos-titulo-card span,
 .desaparecidos-local {
-  color: #666;
+  color: #64707a;
   font-size: 12px;
+  font-weight: 500;
 }
 
 .desaparecidos-local {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
 }
 
 .desaparecidos-vazio {
   margin: 0;
-  color: #555;
-  font-size: 13px;
+  color: #64707a;
+  font-size: 14px;
 }
 
 .desaparecidos-dica {
-  margin-top: 20px;
-  padding: 14px 18px;
-  border-left: 4px solid #e87538;
-  border-radius: 0 5px 5px 0;
-  background: #dedede;
-  color: #303030;
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-left: 4px solid #ef7d3b;
+  border-radius: 0 12px 12px 0;
+  background: #f8f7f4;
+  color: #16232a;
+  border-top: 1px solid rgba(22, 35, 42, 0.06);
+  border-right: 1px solid rgba(22, 35, 42, 0.06);
+  border-bottom: 1px solid rgba(22, 35, 42, 0.06);
+  box-shadow: 0 4px 16px rgba(22, 35, 42, 0.04);
 }
 
 .desaparecidos-dica h2 {
   margin: 0 0 4px;
   font-size: 14px;
+  font-weight: 800;
 }
 
 .desaparecidos-dica p {
   margin: 0;
-  color: #666;
+  color: #64707a;
   font-size: 12px;
+  font-weight: 500;
 }
 
-@media (min-width: 700px) {
+@media (max-width: 1024px) {
   .desaparecidos-campos {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-@media (min-width: 1000px) {
   .desaparecidos-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .desaparecidos-page {
-    padding: 72px 16px 20px;
-  }
-
-  .desaparecidos-filtros-topo {
-    flex-direction: column;
-  }
-
-  .desaparecidos-busca {
-    width: 100%;
-    min-width: 0;
+    padding: 16px;
   }
 
   .desaparecidos-campos {
-    max-width: none;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .desaparecidos-grid {

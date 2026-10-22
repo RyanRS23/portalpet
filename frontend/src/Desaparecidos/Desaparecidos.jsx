@@ -109,6 +109,9 @@ export default function Desaparecidos() {
                 <h1>ANIMAIS DESAPARECIDOS</h1>
                 <p>Ajude um pet a voltar para casa.</p>
               </div>
+            </div>
+
+            <div className="desaparecidos-campos">
               <div className="desaparecidos-busca">
                 <input
                   type="search"
@@ -119,9 +122,7 @@ export default function Desaparecidos() {
                 />
                 <Search size={17} aria-hidden="true" />
               </div>
-            </div>
 
-            <div className="desaparecidos-campos">
               <label>
                 <span className="desaparecidos-sr-only">Cidade</span>
                 <input
@@ -131,6 +132,7 @@ export default function Desaparecidos() {
                   onChange={(event) => setCidade(event.target.value)}
                 />
               </label>
+
               <label>
                 <span className="desaparecidos-sr-only">Raça</span>
                 <input
@@ -140,6 +142,7 @@ export default function Desaparecidos() {
                   onChange={(event) => setRaca(event.target.value)}
                 />
               </label>
+
               <label>
                 <span className="desaparecidos-sr-only">Sexo</span>
                 <select value={sexo} onChange={(event) => setSexo(event.target.value)}>
@@ -148,13 +151,13 @@ export default function Desaparecidos() {
                   <option value="Macho">Macho</option>
                 </select>
               </label>
-            </div>
 
-            <div className="desaparecidos-acoes-filtro">
-              <button type="submit">
-                <SlidersHorizontal size={14} aria-hidden="true" />
-                Filtrar
-              </button>
+              <div className="desaparecidos-acoes-filtro">
+                <button type="submit">
+                  <SlidersHorizontal size={14} aria-hidden="true" />
+                  Filtrar
+                </button>
+              </div>
             </div>
           </form>
 

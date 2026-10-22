@@ -165,16 +165,13 @@ export default function Adocao() {
           <form className="adocao-filtros" onSubmit={filtrarAnimais}>
             <div className="adocao-filtros-topo">
               <div className="adocao-titulo">
-                <h1>
-                  ENCONTRE SEU
-                  <br />
-                  COMPANHEIRO!
-                </h1>
-
+                <h1>ENCONTRE SEU COMPANHEIRO!</h1>
                 <p>Animais disponíveis para adoção</p>
               </div>
+            </div>
 
-              <label className="adocao-busca">
+            <div className="adocao-filtros-campos">
+              <div className="adocao-busca">
                 <input
                   type="text"
                   placeholder="Buscar animal..."
@@ -182,10 +179,8 @@ export default function Adocao() {
                   onChange={(event) => setBusca(event.target.value)}
                 />
                 <Search size={17} />
-              </label>
-            </div>
+              </div>
 
-            <div className="adocao-filtros-campos">
               <label>
                 <span className="sr-only">Porte</span>
                 <select
@@ -238,12 +233,12 @@ export default function Adocao() {
                 type="button"
                 onClick={limparFiltros}
               >
-                <X size={13} />
+                <X size={14} />
                 Limpar
               </button>
 
               <button className="adocao-filtrar" type="submit">
-                <SlidersHorizontal size={13} />
+                <SlidersHorizontal size={14} />
                 Filtrar
               </button>
             </div>
@@ -336,6 +331,7 @@ export default function Adocao() {
 
                       <div className="adocao-card-tags">
                         <span>{animal.porte}</span>
+                        <span>•</span>
                         <span>{animal.sexo}</span>
                       </div>
 

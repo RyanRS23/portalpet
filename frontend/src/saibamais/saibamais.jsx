@@ -1,13 +1,12 @@
-
 import React, { useState } from "react";
 import {
   PawPrint,
-  UserRound,
   ClipboardList,
   Search,
-  Heart,
+  Phone,
+  Home,
   ArrowRight,
-  CheckCircle2,
+  Heart,
 } from "lucide-react";
 
 import { Menu } from "../menu/menuprincipal";
@@ -17,58 +16,66 @@ const etapas = [
   {
     numero: "1",
     titulo: "Cadastre um animal",
-    texto:
-      "Preencha as informações do animal para que ele possa encontrar um novo lar.",
-    icone: <ClipboardList size={21} />,
+    texto: "Adicione informações e fotos do seu animal na plataforma.",
+    icone: <ClipboardList size={26} strokeWidth={1.8} />,
   },
   {
     numero: "2",
-    titulo: "Encontre um adotante",
-    texto:
-      "Conheça pessoas interessadas em oferecer carinho e cuidado ao animal.",
-    icone: <Search size={21} />,
+    titulo: "Encontre ou disponibilize",
+    texto: "Procure seu novo companheiro e combine através de detalhes.",
+    icone: (
+      <div className="composite-icon">
+        <Search size={28} strokeWidth={1.8} />
+        <PawPrint size={11} className="inner-paw" />
+      </div>
+    ),
   },
   {
     numero: "3",
     titulo: "Entre em contato",
-    texto:
-      "Converse com o responsável e conheça melhor o animal antes da adoção.",
-    icone: <UserRound size={21} />,
+    texto: "Converse ou visite o responsável e combine detalhes para adoção.",
+    icone: <Phone size={25} strokeWidth={1.8} />,
   },
   {
     numero: "4",
     titulo: "Dê um novo lar",
-    texto:
-      "Finalize o processo e ajude um animal a começar uma nova história.",
-    icone: <Heart size={21} />,
+    texto: "Receba o animal com carinho, comece uma nova história.",
+    icone: (
+      <div className="composite-icon">
+        <Home size={28} strokeWidth={1.8} />
+        <PawPrint size={11} className="inner-paw-home" />
+      </div>
+    ),
   },
 ];
 
+// DICA: Você pode exportar a imagem única dos 5 cachorros do Figma em PNG transparente
+// ou usar cada cachorro separadamente abaixo:
 const cachorros = [
   {
-    nome: "Cachorro 1",
+    nome: "Labrador Preto",
     imagem:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=85",
   },
   {
-    nome: "Cachorro 2",
+    nome: "Jack Russell",
     imagem:
       "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=85",
   },
   {
-    nome: "Cachorro 3",
+    nome: "Pastor",
     imagem:
       "https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=500&q=85",
   },
   {
-    nome: "Cachorro 4",
+    nome: "Pug",
     imagem:
-      "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=85",
+      "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=85",
   },
   {
-    nome: "Cachorro 5",
+    nome: "Beagle",
     imagem:
-      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=500&q=85",
+      "https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=500&q=85",
   },
 ];
 
@@ -85,115 +92,145 @@ export default function SaibaMais() {
       />
 
       <main className="main-content saiba-mais-page">
+        {/* ================= HERO & COMO FUNCIONA ================= */}
         <section className="saiba-hero">
-          <div className="saiba-hero-copy">
-            <span className="saiba-eyebrow">
-              <PawPrint size={15} />
-              Adoção responsável
-            </span>
-
+          <div className="saiba-hero-header">
             <h1>
               COMO <span>FUNCIONA?</span>
             </h1>
 
-            <h2>Adotar é um ato de amor.</h2>
-
-            <p>
-              Veja como é simples dar um lar para um animal e transformar uma
-              vida!
+            <p className="saiba-subtitle">
+              Adotar é um ato de amor.
+              <br />
+              Veja como é simples dar
+              <br />
+              um lar para um animal e<br />
+              transformar uma vida!
             </p>
+          </div>
 
-            <div className="saiba-patinha saiba-patinha-1">
-              <PawPrint />
+          <div className="saiba-card-wrapper">
+            {/* Cachorro espiando por cima do card (substitua pelo PNG exportado do Figma se tiver) */}
+            <div className="saiba-peeking-dog">
+              <img
+                src="/images/cachorro.png"
+                alt="Cachorro espiando"
+              />
             </div>
-          </div>
 
-          <div className="saiba-hero-image">
-            <img
-              src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=900&q=90"
-              alt="Cachorro esperando por um novo lar"
-            />
+            {/* Patinhas decorativas ao redor do card */}
+            <PawPrint className="paw-decor paw-orange-top-right" />
+            <PawPrint className="paw-decor paw-outline-right" />
+            <PawPrint className="paw-decor paw-orange-left-top" />
+            <PawPrint className="paw-decor paw-outline-left" />
+            <PawPrint className="paw-decor paw-dark-left-mid" />
+            <PawPrint className="paw-decor paw-orange-left-small" />
+            <PawPrint className="paw-decor paw-dark-left-bottom" />
+            <PawPrint className="paw-decor paw-dark-bottom-right" />
+            <PawPrint className="paw-decor paw-outline-bottom-right" />
 
-            <span className="saiba-paw paw-a">
-              <PawPrint />
-            </span>
+            {/* Card Escuro das 4 Etapas */}
+            <div className="saiba-steps">
+              {etapas.map((etapa) => (
+                <article
+                  className={`saiba-step step-${etapa.numero}`}
+                  key={etapa.numero}
+                >
+                  <div className="saiba-step-icon">
+                    {etapa.icone}
+                    <span className="step-badge">{etapa.numero}</span>
+                  </div>
 
-            <span className="saiba-paw paw-b">
-              <PawPrint />
-            </span>
-          </div>
+                  <div className="saiba-step-body">
+                    <h3>
+                      <span>{etapa.numero}.</span> {etapa.titulo}
+                    </h3>
+                    <p>{etapa.texto}</p>
+                  </div>
+                </article>
+              ))}
 
-          <div className="saiba-steps">
-            {etapas.map((etapa) => (
-              <article className="saiba-step" key={etapa.numero}>
-                <div className="saiba-step-icon">
-                  {etapa.icone}
-                  <span>{etapa.numero}</span>
-                </div>
-
-                <div>
-                  <h3>{etapa.titulo}</h3>
-                  <p>{etapa.texto}</p>
-                </div>
-              </article>
-            ))}
-
-            <div className="saiba-step-footer">
-              <PawPrint size={19} />
-              <span>Cada adoção transforma duas vidas.</span>
+              <button type="button" className="saiba-journey-btn">
+                Começar a jornada
+              </button>
             </div>
           </div>
         </section>
 
-        <section className="saiba-dogs">
-          <div className="saiba-dogs-heading">
-            <span>AMOR QUE TRANSFORMA</span>
-            <h2>Uma nova história começa aqui.</h2>
+        {/* ================= SEÇÃO ONDULADA DOS CACHORROS + CTA ================= */}
+        <section className="saiba-middle-wave">
+          {/* Curva clara superior */}
+          <div className="wave-top-Assigned" />
+
+          <div className="saiba-dogs-container">
+            {/* Detalhe de tracinhos na esquerda */}
+            <div className="doodle-lines" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+
+            <div className="saiba-dogs-row">
+              {cachorros.map((cachorro) => (
+                <div className="saiba-dog-item" key={cachorro.nome}>
+                  <img src={cachorro.imagem} alt={cachorro.nome} />
+                </div>
+              ))}
+            </div>
+
+            {/* Coraçõezinhos na direita */}
+            <div className="doodle-hearts" aria-hidden="true">
+              <Heart size={15} />
+              <Heart size={11} />
+            </div>
           </div>
 
-          <div className="saiba-dogs-row">
-            {cachorros.map((cachorro) => (
-              <div className="saiba-dog" key={cachorro.nome}>
-                <img src={cachorro.imagem} alt={cachorro.nome} />
+          {/* Faixa ondulada pêssego com o CTA dentro */}
+          <div className="saiba-cta-band">
+            <div className="saiba-cta">
+              <div className="saiba-cta-icon">
+                <PawPrint size={38} />
               </div>
-            ))}
+
+              <div className="saiba-cta-text">
+                <h2>
+                  Pronto para encontrar <span>seu companheiro?</span>
+                </h2>
+                <p>
+                  Junte-se a nós e descubra como é fácil mudar uma vida,
+                  <br />
+                  incluindo a sua.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                className="saiba-cta-action"
+                aria-label="Avançar"
+              >
+                <PawPrint size={24} className="cta-mini-paw" />
+                <ArrowRight size={28} strokeWidth={2.2} />
+              </button>
+            </div>
           </div>
 
-          <div className="saiba-patinha saiba-patinha-2">
-            <PawPrint />
-          </div>
+          {/* ================= RODAPÉ ================= */}
+          <footer className="saiba-footer">
+            <PawPrint className="footer-watermark-paw left" size={34} />
+
+            <div className="footer-center-line">
+              <span className="line" />
+              <span className="word">ADOTE</span>
+              <span className="dot">•</span>
+              <span className="word">CUIDE</span>
+              <span className="dot">•</span>
+              <span className="word">TRANSFORME</span>
+              <span className="line" />
+            </div>
+
+            <PawPrint className="footer-watermark-paw right" size={34} />
+          </footer>
         </section>
-
-        <section className="saiba-cta">
-          <div className="saiba-cta-icon">
-            <PawPrint size={27} />
-          </div>
-
-          <div className="saiba-cta-text">
-            <h2>
-              Pronto para encontrar seu <span>companheiro?</span>
-            </h2>
-
-            <p>
-              Junte-se a nós e descubra como é fácil mudar uma vida,
-              incluindo a sua.
-            </p>
-          </div>
-
-          <div className="saiba-cta-arrow">
-            <ArrowRight size={24} />
-          </div>
-        </section>
-
-        <footer className="saiba-footer">
-          <PawPrint size={18} />
-          <span>ADOTE</span>
-          <span>•</span>
-          <span>CUIDE</span>
-          <span>•</span>
-          <span>TRANSFORME</span>
-          <PawPrint size={18} />
-        </footer>
       </main>
     </div>
   );
